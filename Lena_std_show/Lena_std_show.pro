@@ -3,6 +3,9 @@
 # Project created by QtCreator 2015-02-22T23:53:20
 #
 #-------------------------------------------------
+# OpenCV 2 Computer Vision Application Programming Cookbook
+# $1.5 Loading, Displaying, and saving images
+
 # Call by qmake
 # If you want to provide cross plaform support, should do something in this file.
 # like
