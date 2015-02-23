@@ -5,6 +5,8 @@
 #include <QFileDialog>
 #include "opencv2/core/core.hpp"
 #include "opencv2/highgui/highgui.hpp"
+// This for cv::cvtColor
+#include "opencv2/opencv.hpp"
 
 namespace Ui {
 class MainWindow;

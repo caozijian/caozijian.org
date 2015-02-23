@@ -3,7 +3,7 @@
 # Project created by QtCreator 2015-02-23T15:44:26
 #
 #-------------------------------------------------
-
+# cv::cvtColor need a new head file.
 QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets

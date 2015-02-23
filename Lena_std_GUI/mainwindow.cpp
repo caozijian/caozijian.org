@@ -30,6 +30,8 @@ void MainWindow::on_pushButton_clicked()
 void MainWindow::on_pushButton_2_clicked()
 {
     cv::flip(image,image,1);
-    cv::namedWindow("Output Image");
-    cv::imshow("Output Image",image);
+    cv::cvtColor(image,image,CV_BGR2RGB);
+    QImage img = QImage((const unsigned char*)(image.data),image.cols,image.rows,QImage::Format_RGB888);;
+    ui->label->setPixmap(QPixmap::fromImage(img));
+    ui->label->resize(ui->label->pixmap()->size());
 }
