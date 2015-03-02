@@ -1,4 +1,5 @@
 #include "histogram1d.h"
+#include <iostream>
 
 Histogram1D::Histogram1D()
 {
@@ -49,5 +50,40 @@ cv::Mat Histogram1D::getHistogramImage(const cv::Mat &image){
 cv::Mat Histogram1D::applyLookUp(const cv::Mat &image, const cv::Mat &lookup){
     cv::Mat result;
     cv::LUT(image, lookup,result);
+    return result;
+}
+cv::Mat Histogram1D::stretch(const cv::Mat &image,int minValue=0){
+    cv::MatND hist = getHistogram(image);
+    int imin = 0;
+    for(;imin < histSize[0];imin++){
+        std::cout<<hist.at<float>(imin)<<std::endl;
+        if(hist.at<float>(imin)>minValue)
+            break;
+
+    }
+
+    int imax = histSize[0] - 1;
+    for(;imax >= 0; imax--){
+        if(hist.at<float>(imax)>minValue)
+            break;
+    }
+    int dim(256);
+    cv::Mat lookup(1,
+                   &dim,
+                   CV_8U);
+
+    for(int i=0;i<256;i++){
+        if(i<imin)lookup.at<uchar>(i)=0;
+        else if(i>imax)lookup.at<uchar>(i)=255;
+        else lookup.at<uchar>(i)=static_cast<uchar>(
+                    255.0*(i-imin)/(imax-imin)+0.5);
+    }
+    cv::Mat result;
+    result = applyLookUp(image,lookup);
+    return result;
+}
+cv::Mat Histogram1D::equalizeHist(const cv::Mat &image){
+    cv::Mat result;
+    cv::equalizeHist(image,result);
     return result;
 }

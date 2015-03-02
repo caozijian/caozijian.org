@@ -5,6 +5,7 @@
 #-------------------------------------------------
 # $4.2 $4.3
 # lookup table can do some image process work.
+# $4.4
 QT       += core
 
 QT       -= gui

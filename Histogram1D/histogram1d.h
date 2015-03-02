@@ -17,6 +17,8 @@ public:
     cv::MatND getHistogram(const cv::Mat &image);
     cv::Mat getHistogramImage(const cv::Mat &image);
     cv::Mat applyLookUp(const cv::Mat &image,const cv::Mat &lookup);
+    cv::Mat stretch(const cv::Mat &image,int minValue);
+    cv::Mat equalizeHist(const cv::Mat &image);
 };
 
 #endif // HISTOGRAM1D_H
